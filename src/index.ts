@@ -9,7 +9,7 @@ import helmet from "helmet";
 import { itemsRouter } from "./items/items.router";
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
-
+  
 dotenv.config();
 
 /**
@@ -32,27 +32,27 @@ const options = {
     definition: {
         openapi: "3.0.0",
         info: {
-            title: "LogRocket Express API with Swagger",
+            title: "Beautiful Car API",
             version: "0.1.0",
             description:
-                "This is a simple CRUD API application made with Express and documented with Swagger",
+                "This is a car API application made with love by Benjamin & Simon",
             license: {
                 name: "MIT",
                 url: "https://spdx.org/licenses/MIT.html",
             },
             contact: {
-                name: "LogRocket",
-                url: "https://logrocket.com",
-                email: "info@email.com",
+                name: "Benjamin & Simon",
+                url: "https://benjaminetsimon.com",
+                email: "benjamin@simon.com",
             },
         },
         servers: [
             {
-                url: "http://localhost:3000/books",
+                url: "http://localhost:"+PORT+"/",
             },
         ],
     },
-    apis: ["./items/items.router.ts"],
+    apis: ['./src/items/items.router.ts'],
 };
 
 const specs = swaggerJsdoc(options);
@@ -66,7 +66,7 @@ app.use((req, res, next) => { next(); }, cors());
 app.use(express.json());
 app.use("/items", itemsRouter);
 app.use(
-    "/api-docs",
+    "/api/",
     swaggerUi.serve,
     swaggerUi.setup(specs)
 );

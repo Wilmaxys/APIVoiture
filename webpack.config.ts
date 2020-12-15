@@ -1,6 +1,7 @@
 const webpack = require("webpack");
 const path = require("path");
 const nodeExternals = require("webpack-node-externals");
+const SwaggerJSDocWebpackPlugin = require('swagger-jsdoc-webpack-plugin');
 
 module.exports = {
   entry: ["webpack/hot/poll?100", "./src/index.ts"],
@@ -24,7 +25,20 @@ module.exports = {
   resolve: {
     extensions: [".tsx", ".ts", ".js"]
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+      new webpack.HotModuleReplacementPlugin(),
+      new SwaggerJSDocWebpackPlugin({
+        swaggerDefinition: {
+          openapi: '3.0.0',
+          info: {
+            title: 'Title',
+            version: '1.0.0',
+            description: 'Description',
+          },
+        },
+        apis: ['./src/**/*.router.ts'],
+      }),
+    ],
   output: {
     path: path.join(__dirname, "dist"),
     filename: "index.js"

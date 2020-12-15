@@ -17,8 +17,48 @@ export const itemsRouter = express.Router();
  * Controller Definitions
  */
 
+ 
 // GET items/
+/**
+ * @swagger
+ *
+ * definitions:
+ *   NewItem:
+ *     type: object
+ *     required:
+ *       - name
+ *       - price
+ *     properties:
+ *       name:
+ *         type: string
+ *       price:
+ *         type: number
+ *   Item:
+ *     allOf:
+ *       - $ref: '#/definitions/NewItem'
+ *       - required:
+ *         - id
+ *       - properties:
+ *         id:
+ *           type: integer
+ *           format: int64
+ */
 
+/**
+ * @swagger
+ * /items:
+ *   get:
+ *     description: Returns items
+ *     produces:
+ *      - application/json
+ *     responses:
+ *       200:
+ *         description: items
+ *         schema:
+ *           type: array
+ *           items:
+ *             $ref: '#/definitions/Item'
+ */
 itemsRouter.get("/", async (req: Request, res: Response) => {
     try {
         const items: Items = await ItemService.findAll();
@@ -30,7 +70,26 @@ itemsRouter.get("/", async (req: Request, res: Response) => {
 });
 
 // GET items/:id
-
+/**
+ * @swagger
+ *
+ * /items/{id}:
+ *   get:
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         type: number
+ *     responses:
+ *       200:
+ *         description: item
+ *         schema:
+ *           type: item
+ *           item:
+ *             $ref: '#/definitions/Item'
+ */
 itemsRouter.get("/:id", async (req: Request, res: Response) => {
     const id: number = parseInt(req.params.id, 10);
 
@@ -45,7 +104,28 @@ itemsRouter.get("/:id", async (req: Request, res: Response) => {
 
 
 // POST items/
-
+/**
+ * @swagger
+ *
+ * /items:
+ *   post:
+ *     description: Creates a item
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: item
+ *         description: Item object
+ *         in:  body
+ *         required: true
+ *         type: string
+ *         schema:
+ *           $ref: '#/definitions/NewItem'
+ *     responses:
+ *       200:
+ *         description: items
+ *         schema:
+ *           $ref: '#/definitions/Item'
+ */
 itemsRouter.post("/", async (req: Request, res: Response) => {
     try {
         const item: Item = req.body.item;
@@ -59,7 +139,28 @@ itemsRouter.post("/", async (req: Request, res: Response) => {
 });
 
 // PUT items/
-
+/**
+ * @swagger
+ *
+ * /item:
+ *   put:
+ *     description: Update a existing item
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: item
+ *         description: Item object
+ *         in:  body
+ *         required: true
+ *         type: string
+ *         schema:
+ *           $ref: '#/definitions/NewItem'
+ *     responses:
+ *       200:
+ *         description: items
+ *         schema:
+ *           $ref: '#/definitions/Item'
+ */
 itemsRouter.put("/", async (req: Request, res: Response) => {
     try {
         const item: Item = req.body.item;
@@ -73,7 +174,22 @@ itemsRouter.put("/", async (req: Request, res: Response) => {
 });
 
 // DELETE items/:id
-
+/**
+ * @swagger
+ *
+ * /items/{id}:
+ *   delete:
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         type: number
+ *     responses:
+ *       200:
+ *         description: Success
+ */
 itemsRouter.delete("/:id", async (req: Request, res: Response) => {
     try {
         const id: number = parseInt(req.params.id, 10);

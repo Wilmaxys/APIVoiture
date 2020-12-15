@@ -6,16 +6,16 @@ import * as dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
-import { itemsRouter } from "./items/items.router";
+import { itemsRouter } from "./models/items/items.router";
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
-
+import { db as mysql } from "./config/mysql.config"
+import { databaseInitialization } from "./models/db.init";
 dotenv.config();
 
 /**
  * App Variables
  */
-
 if (!process.env.PORT) {
     process.exit(1);
 }
@@ -72,6 +72,20 @@ app.use(
 );
 
 /**
+ * Database initialization
+ */
+
+databaseInitialization();
+if(process.env.ENVIRONMENT == "dev"){
+    mysql.instance.sync({ force: true }).then(() => {
+        console.log("Drop and re-sync db.");
+    });
+}
+else {
+    mysql.instance.sync();
+}
+
+/**
  * Server Activation
  */
 
@@ -104,5 +118,4 @@ if (module.hot) {
     module.hot.accept();
     module.hot.dispose(() => server.close());
 }
-
 

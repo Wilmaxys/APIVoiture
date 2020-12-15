@@ -1,6 +1,6 @@
 - Models
 - Routes
-- Swagger
+- Swagger v
 - Test unitaire
 - Sécu JWT
 - 

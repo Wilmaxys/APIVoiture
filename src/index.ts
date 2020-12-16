@@ -75,7 +75,7 @@ declare const module : WebpackHotModule;
                 },
             ],
         },
-        apis: ["./items/items.router.ts"],
+        apis: ["./**/*.router.ts"],
     };
 
     const specs = swaggerJsdoc(options);
@@ -88,6 +88,7 @@ declare const module : WebpackHotModule;
     app.use(express.json());
     app.use("/cars", carsRouter);
     app.use("/reservations", reservationsRouter);
+    app.use("/users", usersRouter);
     app.use(
         "/api-docs",
         swaggerUi.serve,

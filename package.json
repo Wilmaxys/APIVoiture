@@ -6,9 +6,9 @@
   "author": "S.Bultel & B.Ragot",
   "license": "MIT",
   "scripts": {
-    "start2": "node dist/index",
+    "start": "node dist/index",
     "webpack": "webpack --config webpack.config.ts",
-    "start": "npx ts-node src/index.ts"
+    "start2": "npx ts-node src/index.ts"
   },
   "dependencies": {
     "@types/sequelize": "^4.28.9",

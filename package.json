@@ -8,7 +8,7 @@
   "scripts": {
     "start": "node dist/index",
     "webpack": "webpack --config webpack.config.ts",
-    "startAlternative": "npx ts-node src/index.ts"
+    "start2": "npx ts-node src/index.ts"
   },
   "keywords": [
     "heroku"

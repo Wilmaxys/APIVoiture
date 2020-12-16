@@ -6,7 +6,6 @@ import express, { Request, Response } from "express";
 import * as ItemService from "./items.service";
 import { Item } from "./item.interface";
 import { Items } from "./items.interface";
-const auth = require('../../middleware/Auth');
 
 /**
  * Router Definition
@@ -60,9 +59,10 @@ export const itemsRouter = express.Router();
  *           items:
  *             $ref: '#/definitions/Item'
  */
-itemsRouter.get("/", auth, async (req: Request, res: Response) => {
+itemsRouter.get("/", async (req: Request, res: Response) => {
     try {
         const items: Items = await ItemService.findAll();
+
         res.status(200).send(items);
     } catch (e) {
         res.status(404).send(e.message);
@@ -90,7 +90,7 @@ itemsRouter.get("/", auth, async (req: Request, res: Response) => {
  *           item:
  *             $ref: '#/definitions/Item'
  */
-itemsRouter.get("/:id", auth, async (req: Request, res: Response) => {
+itemsRouter.get("/:id", async (req: Request, res: Response) => {
     const id: number = parseInt(req.params.id, 10);
 
     try {
@@ -126,7 +126,7 @@ itemsRouter.get("/:id", auth, async (req: Request, res: Response) => {
  *         schema:
  *           $ref: '#/definitions/Item'
  */
-itemsRouter.post("/", auth, async (req: Request, res: Response) => {
+itemsRouter.post("/", async (req: Request, res: Response) => {
     try {
         const item: Item = req.body.item;
 
@@ -161,7 +161,7 @@ itemsRouter.post("/", auth, async (req: Request, res: Response) => {
  *         schema:
  *           $ref: '#/definitions/Item'
  */
-itemsRouter.put("/", auth, async (req: Request, res: Response) => {
+itemsRouter.put("/", async (req: Request, res: Response) => {
     try {
         const item: Item = req.body.item;
 
@@ -190,7 +190,7 @@ itemsRouter.put("/", auth, async (req: Request, res: Response) => {
  *       200:
  *         description: Success
  */
-itemsRouter.delete("/:id", auth, async (req: Request, res: Response) => {
+itemsRouter.delete("/:id", async (req: Request, res: Response) => {
     try {
         const id: number = parseInt(req.params.id, 10);
         await ItemService.remove(id);

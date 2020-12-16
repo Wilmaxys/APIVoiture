@@ -87,6 +87,7 @@ declare const module : WebpackHotModule;
     app.use((req, res, next) => { next(); }, cors());
     app.use(express.json());
     app.use("/cars", carsRouter);
+    app.use("/users", usersRouter);
     app.use("/reservations", reservationsRouter);
     app.use(
         "/api-docs",

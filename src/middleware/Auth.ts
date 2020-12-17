@@ -13,7 +13,5 @@ export default (req : any, res : any, next : any) => {
         }
     }catch(e){
         throw 'Invalid token';
-
     }
-  
 };

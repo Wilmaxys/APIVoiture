@@ -22,7 +22,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "ac39bd6419e8689f329a";
+/******/ 	var hotCurrentHash = "46d2e982cbd50bb27395";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -883,7 +883,7 @@ eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ?
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst jwt = __webpack_require__(/*! jsonwebtoken */ \"jsonwebtoken\");\nexports.default = (req, res, next) => {\n    try {\n        const token = req.headers.authorization.split(' ')[1];\n        const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');\n        const userId = decodedToken.userId;\n        if (req.body.userId && req.body.userId !== userId) {\n            throw new Error('Invalid user ID');\n        }\n        else {\n            next();\n        }\n    }\n    catch (e) {\n        throw new Error('Invalid token');\n    }\n};\n\n\n//# sourceURL=webpack:///./src/middleware/Auth.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst jwt = __webpack_require__(/*! jsonwebtoken */ \"jsonwebtoken\");\nexports.default = (req, res, next) => {\n    try {\n        const token = req.headers.authorization.split(' ')[1];\n        const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');\n        const userId = decodedToken.userId;\n        if (req.body.userId && req.body.userId !== userId) {\n            throw 'Invalid user ID';\n        }\n        else {\n            next();\n        }\n    }\n    catch (e) {\n        throw 'Invalid token';\n    }\n};\n\n\n//# sourceURL=webpack:///./src/middleware/Auth.ts?");
 
 /***/ }),
 

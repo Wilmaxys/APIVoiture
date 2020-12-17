@@ -89,7 +89,20 @@ export const reservationsRouter = express.Router();
 reservationsRouter.get("/", auth, async (req: Request, res: Response) => {
     try {
         const reservations: Reservation[] = await Reservation.findAll();
-        res.status(200).send(reservations);
+        let reservationsReturns = [];
+
+        reservationsReturns = reservations.map((element : Reservation) => {
+            let elementReturned = {
+                id : element.id,
+                carId : element.carId,
+                begin : element.begin.getUTCDate() + "/" + element.begin.getUTCMonth() + "/" + element.begin.getUTCFullYear(),
+                end : element.end.getUTCDate() + "/" + element.end.getUTCMonth() + "/" + element.end.getUTCFullYear()
+            };
+
+            return elementReturned;
+        });
+
+        res.status(200).send(reservationsReturns);
     } catch (e) {
         res.status(500).send(e.message);
     }
@@ -129,7 +142,19 @@ reservationsRouter.get("/:id", auth, async (req: Request, res: Response) => {
             }
         });
 
-        res.status(200).send(reservation);
+        if (reservation !== null && reservation !== undefined)
+        {
+            const resReturn = {
+                id : reservation?.id,
+                carId: reservation?.carId,
+                begin: reservation?.begin.getUTCDate() + "/" + reservation?.begin.getUTCMonth() + "/" + reservation?.begin.getUTCFullYear(),
+                end: reservation?.end.getUTCDate() + "/" + reservation?.end.getUTCMonth() + "/" + reservation?.end.getUTCFullYear()
+            }
+            res.status(200).send(resReturn);
+        }
+        else{
+            res.status(404).send();
+        }
     } catch (e) {
         res.status(500).send(e.message);
     }

@@ -345,7 +345,7 @@
         "name",
         "brand",
         "description",
-        "price"
+        "dailyPrice"
       ],
       "properties": {
         "name": {
@@ -360,7 +360,7 @@
         "description": {
           "type": "string"
         },
-        "price": {
+        "dailyPrice": {
           "type": "number"
         }
       }

@@ -77,7 +77,7 @@ declare const module : WebpackHotModule;
             },
             servers: [
                 {
-                    url: "http://localhost:7000",
+                    url: "https://mysterious-eyrie-25660.herokuapp.com",
                 },
             ],
         },

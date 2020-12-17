@@ -9,6 +9,9 @@
     "start": "node dist/index",
     "webpack": "webpack --config webpack.config.ts"
   },
+  "keywords": [
+    "heroku"
+  ],
   "dependencies": {
     "@types/sequelize": "^4.28.9",
     "@types/swagger-jsdoc": "^3.0.2",
@@ -37,5 +40,8 @@
     "webpack": "4",
     "webpack-cli": "3",
     "webpack-node-externals": "1"
+  },
+  "engines": {
+    "node": "10.x"
   }
 }

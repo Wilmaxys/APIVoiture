@@ -25,7 +25,7 @@ export const carsRouter = express.Router();
  *       - name
  *       - brand
  *       - description
- *       - price
+ *       - dailyPrice
  *     properties:
  *       name:
  *         type: string
@@ -35,7 +35,7 @@ export const carsRouter = express.Router();
  *         type: string
  *       description:
  *         type: string
- *       price:
+ *       dailyPrice:
  *         type: number
  *   Car:
  *     allOf:

@@ -5,6 +5,7 @@
 import express, { Request, Response } from "express";
 import { Reservation } from "./reservation.class";
 import moment from 'moment';
+import auth from '../../middleware/Auth';
 
 const isInConflict = async (reservation : Reservation) => {
     let isInConflict = false;
@@ -39,7 +40,7 @@ export const reservationsRouter = express.Router();
  */
 
 // GET reservations/
-reservationsRouter.get("/", async (req: Request, res: Response) => {
+reservationsRouter.get("/", auth, async (req: Request, res: Response) => {
     try {
         const reservations: Reservation[] = await Reservation.findAll();
         res.status(200).send(reservations);
@@ -49,7 +50,7 @@ reservationsRouter.get("/", async (req: Request, res: Response) => {
 });
 
 // GET reservations/:id
-reservationsRouter.get("/:id", async (req: Request, res: Response) => {
+reservationsRouter.get("/:id", auth, async (req: Request, res: Response) => {
     const id: number = parseInt(req.params.id, 10);
 
     try {
@@ -67,7 +68,7 @@ reservationsRouter.get("/:id", async (req: Request, res: Response) => {
 
 
 // POST reservations/
-reservationsRouter.post("/", async (req: Request, res: Response) => {
+reservationsRouter.post("/", auth, async (req: Request, res: Response) => {
     try {
         const reservation : Reservation = req.body;
 
@@ -88,7 +89,7 @@ reservationsRouter.post("/", async (req: Request, res: Response) => {
 });
 
 // PUT reservations/
-reservationsRouter.put("/", async (req: Request, res: Response) => {
+reservationsRouter.put("/", auth, async (req: Request, res: Response) => {
     try {
         const reservation: Reservation = req.body;
 
@@ -112,7 +113,7 @@ reservationsRouter.put("/", async (req: Request, res: Response) => {
 });
 
 // DELETE reservations/:id
-reservationsRouter.delete("/:id", async (req: Request, res: Response) => {
+reservationsRouter.delete("/:id", auth, async (req: Request, res: Response) => {
     try {
         const id: number = parseInt(req.params.id, 10);
         

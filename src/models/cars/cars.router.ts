@@ -4,7 +4,7 @@
 
 import express, { Request, Response } from "express";
 import { Car } from "./car.class";
-
+import auth from '../../middleware/Auth';
 /**
  * Router Definition
  */
@@ -16,7 +16,7 @@ export const carsRouter = express.Router();
  */
 
 // GET cars/
-carsRouter.get("/", async (req: Request, res: Response) => {
+carsRouter.get("/", auth, async (req: Request, res: Response) => {
     try {
         const cars: Car[] = await Car.findAll();
         res.status(200).send(cars);
@@ -26,7 +26,7 @@ carsRouter.get("/", async (req: Request, res: Response) => {
 });
 
 // GET cars/:id
-carsRouter.get("/:id", async (req: Request, res: Response) => {
+carsRouter.get("/:id", auth, async (req: Request, res: Response) => {
     const id: number = parseInt(req.params.id, 10);
 
     try {
@@ -44,7 +44,7 @@ carsRouter.get("/:id", async (req: Request, res: Response) => {
 
 
 // POST cars/
-carsRouter.post("/", async (req: Request, res: Response) => {
+carsRouter.post("/", auth, async (req: Request, res: Response) => {
     try {
         const car : Car = req.body;
 
@@ -57,7 +57,7 @@ carsRouter.post("/", async (req: Request, res: Response) => {
 });
 
 // PUT cars/
-carsRouter.put("/", async (req: Request, res: Response) => {
+carsRouter.put("/", auth, async (req: Request, res: Response) => {
     try {
         const car: Car = req.body;
 
@@ -74,7 +74,7 @@ carsRouter.put("/", async (req: Request, res: Response) => {
 });
 
 // DELETE cars/:id
-carsRouter.delete("/:id", async (req: Request, res: Response) => {
+carsRouter.delete("/:id", auth, async (req: Request, res: Response) => {
     try {
         const id: number = parseInt(req.params.id, 10);
         

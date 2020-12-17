@@ -86,9 +86,9 @@ declare const module : WebpackHotModule;
     app.use(helmet());
     app.use((req, res, next) => { next(); }, cors());
     app.use(express.json());
+    app.use("/users", usersRouter);
     app.use("/cars", carsRouter);
     app.use("/reservations", reservationsRouter);
-    app.use("/users", usersRouter);
     app.use(
         "/api-docs",
         swaggerUi.serve,

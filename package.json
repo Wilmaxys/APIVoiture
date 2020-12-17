@@ -1,5 +1,5 @@
 {
-  "name": "APIVoiture",
+  "name": "apivoiture",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/Wilmaxys/APIVoiture",
@@ -7,8 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node dist/index",
-    "webpack": "webpack --config webpack.config.ts",
-    "start2": "npx ts-node src/index.ts"
+    "webpack": "webpack --config webpack.config.ts"
   },
   "dependencies": {
     "@types/sequelize": "^4.28.9",

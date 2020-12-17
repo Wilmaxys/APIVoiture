@@ -123,6 +123,136 @@
         }
       }
     },
+    "/reservations": {
+      "get": {
+        "description": "Returns reservations",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "reservations",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Reservation"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Reservation"
+        ]
+      },
+      "post": {
+        "description": "Creates a reservation",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "reservation",
+            "description": "Reservation object",
+            "in": "body",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "$ref": "#/definitions/NewReservation"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "reservations",
+            "schema": {
+              "$ref": "#/definitions/Reservation"
+            }
+          }
+        },
+        "tags": [
+          "Reservation"
+        ]
+      },
+      "put": {
+        "description": "Update an existing reservation",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "reservation",
+            "description": "Reservation object",
+            "in": "body",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "$ref": "#/definitions/NewReservation"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "reservations",
+            "schema": {
+              "$ref": "#/definitions/Reservation"
+            }
+          }
+        },
+        "tags": [
+          "Reservation"
+        ]
+      }
+    },
+    "/reservations/{id}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "reservation",
+            "schema": {
+              "type": "reservation",
+              "item": {
+                "$ref": "#/definitions/Reservation"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Reservation"
+        ]
+      },
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        },
+        "tags": [
+          "Reservation"
+        ]
+      }
+    },
     "/users/login": {
       "post": {
         "description": "Login to the application",
@@ -170,6 +300,44 @@
       }
     },
     "Item": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/NewItem"
+        },
+        {
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "properties": null,
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      ]
+    },
+    "NewReservation": {
+      "type": "object",
+      "required": [
+        "carId",
+        "begin",
+        "end"
+      ],
+      "properties": {
+        "carId": {
+          "type": "number"
+        },
+        "begin": {
+          "type": "date"
+        },
+        "end": {
+          "type": "date"
+        }
+      }
+    },
+    "Reservation": {
       "allOf": [
         {
           "$ref": "#/definitions/NewItem"

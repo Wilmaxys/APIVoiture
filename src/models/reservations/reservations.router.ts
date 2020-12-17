@@ -39,7 +39,51 @@ export const reservationsRouter = express.Router();
  * Controller Definitions
  */
 
-// GET reservations/
+/**
+ * @swagger
+ *
+ * definitions:
+ *   NewReservation:
+ *     type: object
+ *     required:
+ *       - carId
+ *       - begin
+ *       - end
+ *     properties:
+ *       carId:
+ *         type: number
+ *       begin:
+ *         type: date
+ *       end:
+ *         type: date
+ *   Reservation:
+ *     allOf:
+ *       - $ref: '#/definitions/NewItem'
+ *       - required:
+ *         - id
+ *       - properties:
+ *         id:
+ *           type: integer
+ *           format: int64
+ */
+
+/**
+ * @swagger
+ * /reservations:
+ *   get:
+ *     description: Returns reservations
+ *     produces:
+ *      - application/json
+ *     responses:
+ *       200:
+ *         description: reservations
+ *         schema:
+ *           type: array
+ *           items:
+ *             $ref: '#/definitions/Reservation'
+ *     tags:
+ *       - Reservation
+ */
 reservationsRouter.get("/", auth, async (req: Request, res: Response) => {
     try {
         const reservations: Reservation[] = await Reservation.findAll();
@@ -49,7 +93,28 @@ reservationsRouter.get("/", auth, async (req: Request, res: Response) => {
     }
 });
 
-// GET reservations/:id
+/**
+ * @swagger
+ *
+ * /reservations/{id}:
+ *   get:
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         type: number
+ *     responses:
+ *       200:
+ *         description: reservation
+ *         schema:
+ *           type: reservation
+ *           item:
+ *             $ref: '#/definitions/Reservation'
+ *     tags:
+ *       - Reservation
+ */
 reservationsRouter.get("/:id", auth, async (req: Request, res: Response) => {
     const id: number = parseInt(req.params.id, 10);
 
@@ -67,7 +132,30 @@ reservationsRouter.get("/:id", auth, async (req: Request, res: Response) => {
 });
 
 
-// POST reservations/
+/**
+ * @swagger
+ *
+ * /reservations:
+ *   post:
+ *     description: Creates a reservation
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: reservation
+ *         description: Reservation object
+ *         in:  body
+ *         required: true
+ *         type: string
+ *         schema:
+ *           $ref: '#/definitions/NewReservation'
+ *     responses:
+ *       200:
+ *         description: reservations
+ *         schema:
+ *           $ref: '#/definitions/Reservation'
+ *     tags:
+ *       - Reservation
+ */
 reservationsRouter.post("/", auth, async (req: Request, res: Response) => {
     try {
         const reservation : Reservation = req.body;
@@ -88,7 +176,30 @@ reservationsRouter.post("/", auth, async (req: Request, res: Response) => {
     }
 });
 
-// PUT reservations/
+/**
+ * @swagger
+ *
+ * /reservations:
+ *   put:
+ *     description: Update an existing reservation
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: reservation
+ *         description: Reservation object
+ *         in:  body
+ *         required: true
+ *         type: string
+ *         schema:
+ *           $ref: '#/definitions/NewReservation'
+ *     responses:
+ *       200:
+ *         description: reservations
+ *         schema:
+ *           $ref: '#/definitions/Reservation'
+ *     tags:
+ *       - Reservation
+ */
 reservationsRouter.put("/", auth, async (req: Request, res: Response) => {
     try {
         const reservation: Reservation = req.body;
@@ -112,7 +223,24 @@ reservationsRouter.put("/", auth, async (req: Request, res: Response) => {
     }
 });
 
-// DELETE reservations/:id
+/**
+ * @swagger
+ *
+ * /reservations/{id}:
+ *   delete:
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         type: number
+ *     responses:
+ *       200:
+ *         description: Success
+ *     tags:
+ *       - Reservation
+ */
 reservationsRouter.delete("/:id", auth, async (req: Request, res: Response) => {
     try {
         const id: number = parseInt(req.params.id, 10);

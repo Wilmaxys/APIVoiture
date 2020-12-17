@@ -8,6 +8,11 @@
   "paths": {
     "/cars": {
       "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "Cars"
         ],
@@ -28,25 +33,25 @@
         }
       },
       "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "Cars"
         ],
         "description": "Creates a car",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "car",
-            "description": "Car object",
-            "in": "body",
-            "required": true,
-            "type": "string",
-            "schema": {
-              "$ref": "#/definitions/NewCar"
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/NewCar"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "cars",
@@ -55,39 +60,15 @@
             }
           }
         }
-      },
-      "put": {
-        "description": "Update a existing car",
-        "tags": [
-          "Cars"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "car",
-            "description": "Car object",
-            "in": "body",
-            "required": true,
-            "type": "string",
-            "schema": {
-              "$ref": "#/definitions/NewCar"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Cars",
-            "schema": {
-              "$ref": "#/definitions/Cars"
-            }
-          }
-        }
       }
     },
     "/cars/{id}": {
       "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "Cars"
         ],
@@ -114,7 +95,49 @@
           }
         }
       },
+      "put": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "Update a existing car",
+        "tags": [
+          "Cars"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/NewCar"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cars",
+            "schema": {
+              "$ref": "#/definitions/Car"
+            }
+          }
+        }
+      },
       "delete": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "Cars"
         ],
@@ -138,6 +161,11 @@
     },
     "/reservations": {
       "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "description": "Returns reservations",
         "produces": [
           "application/json"
@@ -158,51 +186,22 @@
         ]
       },
       "post": {
-        "description": "Creates a reservation",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
+        "security": [
           {
-            "name": "reservation",
-            "description": "Reservation object",
-            "in": "body",
-            "required": true,
-            "type": "string",
-            "schema": {
-              "$ref": "#/definitions/NewReservation"
-            }
+            "bearerAuth": []
           }
         ],
-        "responses": {
-          "200": {
-            "description": "reservations",
-            "schema": {
-              "$ref": "#/definitions/Reservation"
+        "description": "Creates a reservation",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/NewReservation"
+              }
             }
           }
         },
-        "tags": [
-          "Reservation"
-        ]
-      },
-      "put": {
-        "description": "Update an existing reservation",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "reservation",
-            "description": "Reservation object",
-            "in": "body",
-            "required": true,
-            "type": "string",
-            "schema": {
-              "$ref": "#/definitions/NewReservation"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "reservations",
@@ -218,6 +217,11 @@
     },
     "/reservations/{id}": {
       "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "produces": [
           "application/json"
         ],
@@ -244,7 +248,49 @@
           "Reservation"
         ]
       },
+      "put": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "Update an existing reservation",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/NewReservation"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "reservations",
+            "schema": {
+              "$ref": "#/definitions/Reservation"
+            }
+          }
+        },
+        "tags": [
+          "Reservation"
+        ]
+      },
       "delete": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "produces": [
           "application/json"
         ],
@@ -268,32 +314,24 @@
     },
     "/users/login": {
       "post": {
-        "description": "Login to the application",
-        "produces": [
-          "application/json"
-        ],
+        "summary": "Login to the api",
         "tags": [
-          "Users"
+          "User"
         ],
-        "parameters": [
-          {
-            "name": "user",
-            "description": "Username to use for login.",
-            "in": "formData",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "password",
-            "description": "User's password.",
-            "in": "formData",
-            "required": true,
-            "type": "string"
+        "requestBody": {
+          "description": "The credentials are admin/admin",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
           }
-        ],
+        },
         "responses": {
-          "200": {
-            "description": "login"
+          "201": {
+            "description": "Created"
           }
         }
       }
@@ -306,13 +344,14 @@
         "immat",
         "name",
         "brand",
-        "description"
+        "description",
+        "price"
       ],
       "properties": {
         "name": {
           "type": "string"
         },
-        "price": {
+        "immat": {
           "type": "string"
         },
         "brand": {
@@ -320,6 +359,9 @@
         },
         "description": {
           "type": "string"
+        },
+        "price": {
+          "type": "number"
         }
       }
     },
@@ -379,6 +421,21 @@
           }
         }
       ]
+    },
+    "User": {
+      "type": "object",
+      "required": [
+        "user",
+        "password"
+      ],
+      "properties": {
+        "user": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
     }
   },
   "components": {},

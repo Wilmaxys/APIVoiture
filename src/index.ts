@@ -52,6 +52,9 @@ declare const module : WebpackHotModule;
      * Swagger documentation
      */
     const options = {
+        swaggerOptions: {
+            authAction : { JWT: {name: "JWT", schema: {type: "apiKey", in: "header", name: "Authorization", description: ""}, value: "Bearer <JWT>"} }
+        },
         definition: {
             openapi: "3.0.0",
             info: {
@@ -60,9 +63,21 @@ declare const module : WebpackHotModule;
                 description:
                     "This is a beautiful car API made with love by Benjamin & Simon"
             },
+            components: {
+                securitySchemes: {
+                  bearerAuth: {
+                    type: 'http',
+                    scheme: 'bearer',
+                    bearerFormat: 'JWT',
+                  }
+                }
+              },
+            security:{
+                bearerAuth: [] ,
+            },
             servers: [
                 {
-                    url: "http://mysterious-eyrie-25660.herokuapp.com",
+                    url: "http://localhost:7000",
                 },
             ],
         },

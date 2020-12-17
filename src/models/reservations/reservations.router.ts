@@ -71,6 +71,8 @@ export const reservationsRouter = express.Router();
  * @swagger
  * /reservations:
  *   get:
+ *     security:
+ *       - bearerAuth: []
  *     description: Returns reservations
  *     produces:
  *      - application/json
@@ -98,6 +100,8 @@ reservationsRouter.get("/", auth, async (req: Request, res: Response) => {
  *
  * /reservations/{id}:
  *   get:
+ *     security:
+ *       - bearerAuth: []
  *     produces:
  *       - application/json
  *     parameters:
@@ -137,17 +141,15 @@ reservationsRouter.get("/:id", auth, async (req: Request, res: Response) => {
  *
  * /reservations:
  *   post:
+ *     security:
+ *       - bearerAuth: []
  *     description: Creates a reservation
- *     produces:
- *       - application/json
- *     parameters:
- *       - name: reservation
- *         description: Reservation object
- *         in:  body
- *         required: true
- *         type: string
- *         schema:
- *           $ref: '#/definitions/NewReservation'
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/definitions/NewReservation'
  *     responses:
  *       200:
  *         description: reservations
@@ -179,19 +181,22 @@ reservationsRouter.post("/", auth, async (req: Request, res: Response) => {
 /**
  * @swagger
  *
- * /reservations:
+ * /reservations/{id}:
  *   put:
+ *     security:
+ *       - bearerAuth: []
  *     description: Update an existing reservation
- *     produces:
- *       - application/json
  *     parameters:
- *       - name: reservation
- *         description: Reservation object
- *         in:  body
+ *       - name: id
+ *         in: path
  *         required: true
- *         type: string
- *         schema:
- *           $ref: '#/definitions/NewReservation'
+ *         type: number
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/definitions/NewReservation'
  *     responses:
  *       200:
  *         description: reservations
@@ -200,8 +205,9 @@ reservationsRouter.post("/", auth, async (req: Request, res: Response) => {
  *     tags:
  *       - Reservation
  */
-reservationsRouter.put("/", auth, async (req: Request, res: Response) => {
+reservationsRouter.put("/:id", auth, async (req: Request, res: Response) => {
     try {
+        const id : number = parseInt(req.params.id, 10);
         const reservation: Reservation = req.body;
 
         reservation.begin = moment.utc(reservation.begin, "DD/MM/YYYY", "Europe/Paris").toDate()
@@ -228,6 +234,8 @@ reservationsRouter.put("/", auth, async (req: Request, res: Response) => {
  *
  * /reservations/{id}:
  *   delete:
+ *     security:
+ *       - bearerAuth: []
  *     produces:
  *       - application/json
  *     parameters:

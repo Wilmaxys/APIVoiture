@@ -17,6 +17,7 @@ export interface CarAttributes {
   name: string;
   brand: string;
   description: string;
+  dailyPrice: number;
 }
 
 interface CarCreationAttributes extends Optional<CarAttributes, "id"> { }
@@ -27,6 +28,7 @@ export class Car extends Model<CarAttributes, CarCreationAttributes> implements 
   public name!: string;
   public brand!: string;
   public description!: string;
+  public dailyPrice!: number;
 
   // timestamps!
   public readonly createdAt!: Date;
@@ -74,6 +76,10 @@ export const initialize = {
         },
         immat: {
           type: new DataTypes.STRING(128),
+          allowNull: false,
+        },
+        dailyPrice: {
+          type: DataTypes.INTEGER.UNSIGNED,
           allowNull: false,
         }
       },

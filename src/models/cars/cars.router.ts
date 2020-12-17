@@ -25,15 +25,18 @@ export const carsRouter = express.Router();
  *       - name
  *       - brand
  *       - description
+ *       - price
  *     properties:
  *       name:
  *         type: string
- *       price:
+ *       immat:
  *         type: string
  *       brand:
  *         type: string
  *       description:
  *         type: string
+ *       price:
+ *         type: number
  *   Car:
  *     allOf:
  *       - $ref: '#/definitions/NewCar'
@@ -50,6 +53,8 @@ export const carsRouter = express.Router();
  * @swagger
  * /cars:
  *   get:
+ *     security:
+ *       - bearerAuth: []
  *     tags:
  *       - Cars
  *     description: Returns cars
@@ -78,6 +83,8 @@ carsRouter.get("/", auth, async (req: Request, res: Response) => {
  *
  * /cars/{id}:
  *   get:
+ *     security:
+ *       - bearerAuth: []
  *     tags:
  *       - Cars
  *     produces:
@@ -116,19 +123,17 @@ carsRouter.get("/:id", auth, async (req: Request, res: Response) => {
  *
  * /cars:
  *   post:
+ *     security:
+ *       - bearerAuth: []
  *     tags:
  *       - Cars
  *     description: Creates a car
- *     produces:
- *       - application/json
- *     parameters:
- *       - name: car
- *         description: Car object
- *         in:  body
- *         required: true
- *         type: string
- *         schema:
- *           $ref: '#/definitions/NewCar'
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/definitions/NewCar'
  *     responses:
  *       200:
  *         description: cars
@@ -152,34 +157,38 @@ carsRouter.post("/", auth, async (req: Request, res: Response) => {
 /**
  * @swagger
  *
- * /cars:
+ * /cars/{id}:
  *   put:
+ *     security:
+ *       - bearerAuth: []
  *     description: Update a existing car
  *     tags:
  *       - Cars
- *     produces:
- *       - application/json
  *     parameters:
- *       - name: car
- *         description: Car object
- *         in:  body
+ *       - name: id
+ *         in: path
  *         required: true
- *         type: string
- *         schema:
- *           $ref: '#/definitions/NewCar'
+ *         type: number
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/definitions/NewCar'
  *     responses:
  *       200:
  *         description: Cars
  *         schema:
- *           $ref: '#/definitions/Cars'
+ *           $ref: '#/definitions/Car'
  */
-carsRouter.put("/", auth, async (req: Request, res: Response) => {
+carsRouter.put("/:id", auth, async (req: Request, res: Response) => {
     try {
-        const car: Car = req.body;
+        const id : number = parseInt(req.params.id, 10);
+        const car : Car = req.body;
 
         await Car.update(car, {
             where: {
-              id: car.id
+              id: id
             }
           });
 
@@ -195,6 +204,8 @@ carsRouter.put("/", auth, async (req: Request, res: Response) => {
  *
  * /cars/{id}:
  *   delete:
+ *     security:
+ *       - bearerAuth: []
  *     tags:
  *       - Cars
  *     produces:

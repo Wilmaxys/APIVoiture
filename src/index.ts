@@ -55,27 +55,18 @@ declare const module : WebpackHotModule;
         definition: {
             openapi: "3.0.0",
             info: {
-                title: "LogRocket Express API with Swagger",
-                version: "0.1.0",
+                title: "Beautiful Car API",
+                version: "1.0.2",
                 description:
-                    "This is a simple CRUD API application made with Express and documented with Swagger",
-                license: {
-                    name: "MIT",
-                    url: "https://spdx.org/licenses/MIT.html",
-                },
-                contact: {
-                    name: "LogRocket",
-                    url: "https://logrocket.com",
-                    email: "info@email.com",
-                },
+                    "This is a beautiful car API made with love by Benjamin & Simon"
             },
             servers: [
                 {
-                    url: "http://localhost:3000/books",
+                    url: "http://localhost:7000/",
                 },
             ],
         },
-        apis: ["./items/items.router.ts"],
+        apis: ["./**/**/*.router.ts"],
     };
 
     const specs = swaggerJsdoc(options);

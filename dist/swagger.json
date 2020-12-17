@@ -6,53 +6,91 @@
     "description": "Description"
   },
   "paths": {
-    "/items": {
+    "/cars": {
       "get": {
-        "description": "Returns items",
+        "tags": [
+          "Cars"
+        ],
+        "description": "Returns cars",
         "produces": [
           "application/json"
         ],
         "responses": {
           "200": {
-            "description": "items",
+            "description": "cars",
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/Item"
+                "$ref": "#/definitions/Car"
               }
             }
           }
         }
       },
       "post": {
-        "description": "Creates a item",
+        "tags": [
+          "Cars"
+        ],
+        "description": "Creates a car",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "item",
-            "description": "Item object",
+            "name": "car",
+            "description": "Car object",
             "in": "body",
             "required": true,
             "type": "string",
             "schema": {
-              "$ref": "#/definitions/NewItem"
+              "$ref": "#/definitions/NewCar"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "items",
+            "description": "cars",
             "schema": {
-              "$ref": "#/definitions/Item"
+              "$ref": "#/definitions/Car"
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Update a existing car",
+        "tags": [
+          "Cars"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "car",
+            "description": "Car object",
+            "in": "body",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "$ref": "#/definitions/NewCar"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cars",
+            "schema": {
+              "$ref": "#/definitions/Cars"
             }
           }
         }
       }
     },
-    "/items/{id}": {
+    "/cars/{id}": {
       "get": {
+        "tags": [
+          "Cars"
+        ],
         "produces": [
           "application/json"
         ],
@@ -66,17 +104,20 @@
         ],
         "responses": {
           "200": {
-            "description": "item",
+            "description": "Car",
             "schema": {
-              "type": "item",
+              "type": "Car",
               "item": {
-                "$ref": "#/definitions/Item"
+                "$ref": "#/definitions/Car"
               }
             }
           }
         }
       },
       "delete": {
+        "tags": [
+          "Cars"
+        ],
         "produces": [
           "application/json"
         ],
@@ -91,34 +132,6 @@
         "responses": {
           "200": {
             "description": "Success"
-          }
-        }
-      }
-    },
-    "/item": {
-      "put": {
-        "description": "Update a existing item",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "item",
-            "description": "Item object",
-            "in": "body",
-            "required": true,
-            "type": "string",
-            "schema": {
-              "$ref": "#/definitions/NewItem"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "items",
-            "schema": {
-              "$ref": "#/definitions/Item"
-            }
           }
         }
       }
@@ -259,6 +272,9 @@
         "produces": [
           "application/json"
         ],
+        "tags": [
+          "Users"
+        ],
         "parameters": [
           {
             "name": "user",
@@ -284,25 +300,33 @@
     }
   },
   "definitions": {
-    "NewItem": {
+    "NewCar": {
       "type": "object",
       "required": [
+        "immat",
         "name",
-        "price"
+        "brand",
+        "description"
       ],
       "properties": {
         "name": {
           "type": "string"
         },
         "price": {
-          "type": "number"
+          "type": "string"
+        },
+        "brand": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
         }
       }
     },
-    "Item": {
+    "Car": {
       "allOf": [
         {
-          "$ref": "#/definitions/NewItem"
+          "$ref": "#/definitions/NewCar"
         },
         {
           "required": [

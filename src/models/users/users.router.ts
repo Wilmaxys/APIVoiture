@@ -17,6 +17,8 @@ export const usersRouter = express.Router();
  *     description: Login to the application
  *     produces:
  *       - application/json
+ *     tags:
+ *       - Users
  *     parameters:
  *       - name: user
  *         description: Username to use for login.

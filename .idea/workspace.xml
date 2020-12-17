@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2a224a0b-3650-48b9-90be-5f0e64f46b4d" name="Default Changelist" comment="add users routers">
+      <change afterPath="$PROJECT_DIR$/.idea/APIVoiture.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/swagger.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/swagger.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/items/item.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/items/items.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/items/items.router.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/items/items.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/cars/cars.router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/cars/cars.router.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/users/users.router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/users/users.router.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1lkAltQHszNlquCg243SsFv8DBy" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2a224a0b-3650-48b9-90be-5f0e64f46b4d" name="Default Changelist" comment="" />
+      <created>1608130877493</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1608130877493</updated>
+      <workItem from="1608130881650" duration="2661000" />
+      <workItem from="1608192651629" duration="1960000" />
+      <workItem from="1608195244476" duration="3199000" />
+    </task>
+    <task id="LOCAL-00001" summary="add users routers">
+      <created>1608135487374</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1608135487375</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add users routers" />
+    <option name="LAST_COMMIT_MESSAGE" value="add users routers" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="553" y="121" key="CommitChangelistDialog2" timestamp="1608199240786">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="553" y="121" key="CommitChangelistDialog2/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1608135487153" />
+    <state x="553" y="121" key="CommitChangelistDialog2/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1608199240786" />
+    <state width="1878" height="305" key="GridCell.Tab.0.bottom" timestamp="1608195188750">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="305" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1608195188750" />
+    <state width="1878" height="305" key="GridCell.Tab.0.center" timestamp="1608195188748">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="305" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1608195188748" />
+    <state width="1878" height="305" key="GridCell.Tab.0.left" timestamp="1608195188747">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="305" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1608195188747" />
+    <state width="1878" height="305" key="GridCell.Tab.0.right" timestamp="1608195188750">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="305" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1608195188750" />
+    <state x="600" y="305" key="MultipleFileMergeDialog" timestamp="1608134172198">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="600" y="305" key="MultipleFileMergeDialog/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1608134172198" />
+    <state x="0" y="0" key="RollbackChangesDialog" timestamp="1608199220437">
+      <screen x="0" y="25" width="1920" height="1055" />
+    </state>
+    <state x="744" y="255" key="RollbackChangesDialog/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1608135136641" />
+    <state x="0" y="0" key="RollbackChangesDialog/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1608199220437" />
+    <state x="0" y="0" key="RollbackChangesDialog/1920.0.1920.1080/0.0.1920.1080@0.25.1920.1055" timestamp="1608195373134" />
+    <state x="0" y="0" key="RollbackChangesDialog/1920.0.1920.1080/0.0.1920.1080@0.25.1920.996" timestamp="1608194196772" />
+    <state x="560" y="277" key="Vcs.Push.Dialog.v2" timestamp="1608135499335">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="560" y="277" key="Vcs.Push.Dialog.v2/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1608135499335" />
+    <state x="766" y="458" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608197492555">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="766" y="458" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1608135463354" />
+    <state x="766" y="458" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1608197492555" />
+  </component>
+</project>

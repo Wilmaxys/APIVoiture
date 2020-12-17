@@ -40,8 +40,5 @@
     "webpack": "4",
     "webpack-cli": "3",
     "webpack-node-externals": "1"
-  },
-  "engines": {
-    "node": "10.x"
   }
 }

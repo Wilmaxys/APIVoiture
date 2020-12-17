@@ -106,12 +106,15 @@ declare const module : WebpackHotModule;
      */
     databaseTableInitialization();
     databaseForeignJeyInitialization();
-    if (process.env.ENVIRONMENT == "dev") {
-        await mysql.instance.sync({ force: true });
-    }
-    else {
-        mysql.instance.sync();
-    }
+
+    await mysql.instance.sync({ force: true });
+    
+    //if (process.env.ENVIRONMENT == "dev") {
+    //    await mysql.instance.sync({ force: true });
+    //}
+    //else {
+    //    mysql.instance.sync();
+    //}
     databseDataInitialization();
 
     /**

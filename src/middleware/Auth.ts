@@ -7,13 +7,11 @@ export default (req : any, res : any, next : any) => {
 
         const userId = decodedToken.userId;
         if (req.body.userId && req.body.userId !== userId) {
-          throw 'Invalid user ID';
+          throw new Error('Invalid user ID');
         } else {
           next();
         }
     }catch(e){
-        throw 'Invalid token';
-
+        throw new Error('Invalid token');
     }
-  
 };

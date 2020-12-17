@@ -58,7 +58,7 @@ export const reservationsRouter = express.Router();
  *         type: date
  *   Reservation:
  *     allOf:
- *       - $ref: '#/definitions/NewItem'
+ *       - $ref: '#/definitions/NewReservation'
  *       - required:
  *         - id
  *       - properties:
@@ -79,7 +79,7 @@ export const reservationsRouter = express.Router();
  *         description: reservations
  *         schema:
  *           type: array
- *           items:
+ *           reservations:
  *             $ref: '#/definitions/Reservation'
  *     tags:
  *       - Reservation
@@ -110,7 +110,7 @@ reservationsRouter.get("/", auth, async (req: Request, res: Response) => {
  *         description: reservation
  *         schema:
  *           type: reservation
- *           item:
+ *           reservation:
  *             $ref: '#/definitions/Reservation'
  *     tags:
  *       - Reservation

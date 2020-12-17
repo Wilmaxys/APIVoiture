@@ -134,7 +134,7 @@
             "description": "reservations",
             "schema": {
               "type": "array",
-              "items": {
+              "reservations": {
                 "$ref": "#/definitions/Reservation"
               }
             }
@@ -221,7 +221,7 @@
             "description": "reservation",
             "schema": {
               "type": "reservation",
-              "item": {
+              "reservation": {
                 "$ref": "#/definitions/Reservation"
               }
             }
@@ -340,7 +340,7 @@
     "Reservation": {
       "allOf": [
         {
-          "$ref": "#/definitions/NewItem"
+          "$ref": "#/definitions/NewReservation"
         },
         {
           "required": [

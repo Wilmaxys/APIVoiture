@@ -116,9 +116,9 @@ carsRouter.get("/", auth, async (req: Request, res: Response) => {
  *             $ref: '#/definitions/Car'
  */
 carsRouter.get("/:id", auth, async (req: Request, res: Response) => {
-    const id: number = parseInt(req.params.id, 10);
-
     try {
+        const id: number = parseInt(req.params.id, 10);
+
         const car : Car | null = await Car.findOne({
             where: {
               id: id

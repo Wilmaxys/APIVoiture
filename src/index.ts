@@ -58,10 +58,10 @@ declare const module : WebpackHotModule;
         definition: {
             openapi: "3.0.0",
             info: {
-                title: "Beautiful Car API",
-                version: "1.0.2",
+                title: "Team BS Car",
+                version: "1.0.3",
                 description:
-                    "To launch request with this documentation you need to send a request to /users/login at the end with the credentials admin/admin and then put the token in authorize in the top rifht corner. After that you will be able to test all of our request within the documentation."
+                    "To launch request with this documentation you need to send a request to /users/login at the end with the credentials admin/admin and then put the token in authorize in the top right corner. After that you will be able to test all of our request within the documentation."
             },
             components: {
                 securitySchemes: {

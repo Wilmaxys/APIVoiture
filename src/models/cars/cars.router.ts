@@ -84,7 +84,7 @@ carsRouter.get("/", auth, async (req: Request, res: Response) => {
             }
         })
 
-        res.status(200).send(cars);
+        res.status(200).send(carReturn);
     } catch (e) {
         res.status(404).send(e.message);
     }

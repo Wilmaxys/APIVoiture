@@ -71,6 +71,19 @@ export const carsRouter = express.Router();
 carsRouter.get("/", auth, async (req: Request, res: Response) => {
     try {
         const cars: Car[] = await Car.findAll();
+        let carReturn = [];
+
+        carReturn = cars.map((element) => {
+            return {
+                id: element.id,
+                name: element.name,
+                description: element.description,
+                brand: element.brand,
+                immat: element.immat,
+                dailyPrice: element.dailyPrice,
+            }
+        })
+
         res.status(200).send(cars);
     } catch (e) {
         res.status(404).send(e.message);
@@ -112,7 +125,14 @@ carsRouter.get("/:id", auth, async (req: Request, res: Response) => {
             }
         });
 
-        res.status(200).send(car);
+        res.status(200).send({
+            id: car?.id,
+            name: car?.name,
+            description: car?.description,
+            brand: car?.brand,
+            immat: car?.immat,
+            dailyPrice: car?.dailyPrice,
+        });
     } catch (e) {
         res.status(404).send(e.message);
     }

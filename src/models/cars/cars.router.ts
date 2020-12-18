@@ -134,7 +134,7 @@ carsRouter.get("/:id", auth, async (req: Request, res: Response) => {
             dailyPrice: car?.dailyPrice,
         });
     } catch (e) {
-        res.status(404).send(e.message);
+        res.sendStatus(500);
     }
 });
 
@@ -214,7 +214,7 @@ carsRouter.put("/:id", auth, async (req: Request, res: Response) => {
 
         res.sendStatus(200);
     } catch (e) {
-        res.status(500).send(e.message);
+        res.sendStatus(500);
     }
 });
 
@@ -251,6 +251,6 @@ carsRouter.delete("/:id", auth, async (req: Request, res: Response) => {
 
         res.sendStatus(200);
     } catch (e) {
-        res.status(500).send(e.message);
+        res.sendStatus(500);
     }
 });

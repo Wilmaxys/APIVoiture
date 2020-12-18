@@ -133,9 +133,9 @@ reservationsRouter.get("/", auth, async (req: Request, res: Response) => {
  *       - Reservation
  */
 reservationsRouter.get("/:id", auth, async (req: Request, res: Response) => {
-    const id: number = parseInt(req.params.id, 10);
-
     try {
+        const id: number = parseInt(req.params.id, 10);
+
         const reservation : Reservation | null = await Reservation.findOne({
             where: {
               id: id
@@ -156,7 +156,7 @@ reservationsRouter.get("/:id", auth, async (req: Request, res: Response) => {
             res.status(404).send();
         }
     } catch (e) {
-        res.status(500).send(e.message);
+        res.sendStatus(500);
     }
 });
 
@@ -286,7 +286,7 @@ reservationsRouter.put("/:id", auth, async (req: Request, res: Response) => {
 
         res.sendStatus(200);
     } catch (e) {
-        res.status(500).send(e.message);
+        res.sendStatus(500);
     }
 });
 
@@ -322,6 +322,6 @@ reservationsRouter.delete("/:id", auth, async (req: Request, res: Response) => {
 
         res.sendStatus(200);
     } catch (e) {
-        res.status(500).send(e.message);
+        res.sendStatus(500);
     }
 });

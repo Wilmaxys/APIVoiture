@@ -61,7 +61,7 @@ declare const module : WebpackHotModule;
                 title: "Beautiful Car API",
                 version: "1.0.2",
                 description:
-                    "This is a beautiful car API made with love by Benjamin & Simon"
+                    "To launch request with this documentation you need to send a request to /users/login at the end with the credentials admin/admin and then put the token in authorize in the top rifht corner. After that you will be able to test all of our request within the documentation."
             },
             components: {
                 securitySchemes: {

@@ -312,6 +312,37 @@
         ]
       }
     },
+    "/reservations/disponibility": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "Test if you can create a reservation",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/NewReservation"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "reservations",
+            "schema": {
+              "$ref": "#/definitions/Reservation"
+            }
+          }
+        },
+        "tags": [
+          "Reservation"
+        ]
+      }
+    },
     "/users/login": {
       "post": {
         "summary": "Login to the api",

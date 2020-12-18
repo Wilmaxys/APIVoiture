@@ -95,8 +95,8 @@ reservationsRouter.get("/", auth, async (req: Request, res: Response) => {
             let elementReturned = {
                 id : element.id,
                 carId : element.carId,
-                begin : element.begin.getUTCDate() + "/" + element.begin.getUTCMonth() + "/" + element.begin.getUTCFullYear(),
-                end : element.end.getUTCDate() + "/" + element.end.getUTCMonth() + "/" + element.end.getUTCFullYear()
+                begin : element.begin.getUTCDate() + "/" + (element.begin.getUTCMonth() + 1) + "/" + element.begin.getUTCFullYear(),
+                end : element.end.getUTCDate() + "/" + (element.begin.getUTCMonth() + 1) + "/" + element.end.getUTCFullYear()
             };
 
             return elementReturned;
@@ -147,8 +147,8 @@ reservationsRouter.get("/:id", auth, async (req: Request, res: Response) => {
             const resReturn = {
                 id : reservation?.id,
                 carId: reservation?.carId,
-                begin: reservation?.begin.getUTCDate() + "/" + reservation?.begin.getUTCMonth() + "/" + reservation?.begin.getUTCFullYear(),
-                end: reservation?.end.getUTCDate() + "/" + reservation?.end.getUTCMonth() + "/" + reservation?.end.getUTCFullYear()
+                begin: reservation?.begin.getUTCDate() + "/" + (reservation?.begin.getUTCMonth() + 1) + "/" + reservation?.begin.getUTCFullYear(),
+                end: reservation?.end.getUTCDate() + "/" + (reservation?.end.getUTCMonth() + 1)  + "/" + reservation?.end.getUTCFullYear()
             }
             res.status(200).send(resReturn);
         }
@@ -198,6 +198,42 @@ reservationsRouter.post("/", auth, async (req: Request, res: Response) => {
 
 
         res.sendStatus(201);
+    } catch (e) {
+        res.status(500).send(e.message);
+    }
+});
+
+/**
+ * @swagger
+ *
+ * /reservations/disponibility:
+ *   post:
+ *     security:
+ *       - bearerAuth: []
+ *     description: Test if you can create a reservation
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/definitions/NewReservation'
+ *     responses:
+ *       200:
+ *         description: reservations
+ *         schema:
+ *           $ref: '#/definitions/Reservation'
+ *     tags:
+ *       - Reservation
+ */
+reservationsRouter.post("/disponibility", auth, async (req: Request, res: Response) => {
+    try {
+        const reservation : Reservation = req.body;
+        reservation.begin = moment.utc(reservation.begin, "DD/MM/YYYY", "Europe/Paris").toDate()
+        reservation.end = moment.utc(reservation.end, "DD/MM/YYYY", "Europe/Paris").toDate()
+
+        let disponibility = !(await isInConflict(reservation));
+    
+        res.send({disponibility : disponibility});
     } catch (e) {
         res.status(500).send(e.message);
     }
